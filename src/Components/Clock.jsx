@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Clock(props) {
-  const { ipAddress } = props;
+  const { ipAddress, hideQuote } = props;
   const [clockInfo, setClockInfo] = useState(null);
 
   const days = [
@@ -33,6 +33,14 @@ export default function Clock(props) {
           <h1>{clockInfo.datetime}</h1>
           <h1>{clockInfo.abbreviation}</h1>
           <h1>{days[clockInfo.day_of_week - 1]}</h1>
+        </>
+      )}
+      {hideQuote && (
+        <>
+          <h1>Day of the year</h1>
+          <h1>Day of the week</h1>
+          <h1>Current timezone</h1>
+          <h1>Week Number</h1>
         </>
       )}
     </div>

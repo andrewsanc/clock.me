@@ -3,6 +3,7 @@ import Clock from "./Components/Clock";
 import Quote from "./Components/Quote";
 
 export default function App() {
+  const [hideQuote, setHideQuote] = useState(false);
   const [userInfo, setUserInfo] = useState("");
 
   useEffect(() => {
@@ -28,10 +29,12 @@ export default function App() {
 
   return (
     <>
-      <h1>Hello World</h1>
-      <Quote />
+      {!hideQuote && <Quote />}
       {userInfo && <h1>{userInfo.ip}</h1>}
-      {userInfo && <Clock ipAddress={userInfo.ip} />}
+      {userInfo && <Clock ipAddress={userInfo.ip} hideQuote={hideQuote} />}
+      <button onClick={() => setHideQuote(!hideQuote)}>
+        {hideQuote ? "Less" : "More"}
+      </button>
     </>
   );
 }
