@@ -18,3 +18,7 @@ body {
   margin: 0;
   display: flex;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
