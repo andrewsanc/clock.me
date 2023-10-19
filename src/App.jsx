@@ -4,7 +4,7 @@ import Quote from "./Components/Quote";
 
 export default function App() {
   const [hideQuote, setHideQuote] = useState(false);
-  const [userInfo, setUserInfo] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
     async function getIpData() {
@@ -32,7 +32,10 @@ export default function App() {
       {!hideQuote && <Quote />}
       {userInfo && <h1>{userInfo.ip}</h1>}
       {userInfo && <Clock ipAddress={userInfo.ip} hideQuote={hideQuote} />}
-      <button onClick={() => setHideQuote(!hideQuote)}>
+      <button
+        className='py-2 text-sm text-white bg-blue-500 hover:bg-blue-700 hover:drop-shadow-md duration-300'
+        onClick={() => setHideQuote(!hideQuote)}
+      >
         {hideQuote ? "Less" : "More"}
       </button>
     </>
