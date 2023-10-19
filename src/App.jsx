@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Clock from "./Components/Clock";
 import Quote from "./Components/Quote";
+import Button from "./Components/Button/Button";
 
 export default function App() {
   const [hideQuote, setHideQuote] = useState(false);
@@ -32,12 +33,11 @@ export default function App() {
       {!hideQuote && <Quote />}
       {userInfo && <h1>{userInfo.ip}</h1>}
       {userInfo && <Clock ipAddress={userInfo.ip} hideQuote={hideQuote} />}
-      <button
-        className='py-2 text-sm text-white bg-blue-500 hover:bg-blue-700 hover:drop-shadow-md duration-300'
+      <Button
         onClick={() => setHideQuote(!hideQuote)}
-      >
-        {hideQuote ? "Less" : "More"}
-      </button>
+        toggled={hideQuote ? true : false}
+        text={["Less", "More"]}
+      />
     </>
   );
 }
