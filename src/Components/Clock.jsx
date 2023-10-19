@@ -54,7 +54,7 @@ export default function Clock(props) {
             </div>
           </div>
           <Button
-            onClick={() => setHideQuote(!hideQuote)}
+            onClick={() => setHideQuote(false)}
             toggled={hideQuote ? true : false}
             text={["Less", "More"]}
             style='self-end'
