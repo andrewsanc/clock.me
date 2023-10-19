@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Clock from "./Components/Clock";
 import Quote from "./Components/Quote";
-import Button from "./Components/Button/Button";
+import backgroundDay from "./assets/desktop/bg-image-daytime.jpg";
 
 export default function App() {
   const [hideQuote, setHideQuote] = useState(false);
@@ -29,14 +29,18 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <div
+      className='bg-cover bg-no-repeat h-screen'
+      style={{ backgroundImage: `url(${backgroundDay})` }}
+    >
       {!hideQuote && <Quote />}
-      {userInfo && <Clock userInfo={userInfo} hideQuote={hideQuote} />}
-      <Button
-        onClick={() => setHideQuote(!hideQuote)}
-        toggled={hideQuote ? true : false}
-        text={["Less", "More"]}
-      />
-    </>
+      {userInfo && (
+        <Clock
+          userInfo={userInfo}
+          hideQuote={hideQuote}
+          setHideQuote={setHideQuote}
+        />
+      )}
+    </div>
   );
 }
