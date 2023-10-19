@@ -32,7 +32,7 @@ export default function App() {
     <>
       {!hideQuote && <Quote />}
       {userInfo && <h1>{userInfo.ip}</h1>}
-      {userInfo && <Clock ipAddress={userInfo.ip} hideQuote={hideQuote} />}
+      {userInfo && <Clock userInfo={userInfo} hideQuote={hideQuote} />}
       <Button
         onClick={() => setHideQuote(!hideQuote)}
         toggled={hideQuote ? true : false}
