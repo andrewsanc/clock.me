@@ -10,19 +10,12 @@ export default function App() {
   useEffect(() => {
     async function getIpData() {
       const response = await fetch(
-        `https://api.ipbase.com/v2/info?apikey=${
-          import.meta.env.VITE_IPBASE_KEY
-        }&ip=`
+        `https://ipgeolocation.abstractapi.com/v1?api_key=${
+          import.meta.env.VITE_IPGEOLOCATION_API
+        }`
       );
-      const {
-        data: { ip, location, timezone },
-      } = await response.json();
-
-      setUserInfo({
-        ip,
-        location,
-        timezone,
-      });
+      const data = await response.json();
+      setUserInfo(data);
     }
 
     getIpData();
@@ -30,17 +23,19 @@ export default function App() {
 
   return (
     <div
-      className='bg-cover bg-no-repeat h-screen'
+      className='h-screen overflow-hidden bg-cover bg-no-repeat'
       style={{ backgroundImage: `url(${backgroundDay})` }}
     >
-      {!hideQuote && <Quote />}
-      {userInfo && (
-        <Clock
-          userInfo={userInfo}
-          hideQuote={hideQuote}
-          setHideQuote={setHideQuote}
-        />
-      )}
+      <div className='m-auto'>
+        {!hideQuote && <Quote />}
+        {userInfo && (
+          <Clock
+            userInfo={userInfo}
+            hideQuote={hideQuote}
+            setHideQuote={setHideQuote}
+          />
+        )}
+      </div>
     </div>
   );
 }
