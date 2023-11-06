@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Clock from "./Components/Clock";
 import Quote from "./Components/Quote";
-import backgroundDay from "./assets/desktop/bg-image-daytime.jpg";
 
 export default function App() {
   const [userInfo, setUserInfo] = useState(null);

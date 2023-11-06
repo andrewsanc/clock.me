@@ -3,6 +3,7 @@ import refreshIcon from "../assets/desktop/icon-refresh.svg";
 
 export default function Quote() {
   const [quoteData, setQuoteData] = useState("");
+  const [fade, setFade] = useState(false);
 
   useEffect(() => {
     async function getData() {
@@ -14,9 +15,11 @@ export default function Quote() {
   }, []);
 
   async function handleOnClick(e) {
+    setFade(true);
     e.preventDefault();
     const quote = await getQuoteData();
     setQuoteData(quote);
+    setFade(false);
   }
 
   async function getQuoteData() {
@@ -26,8 +29,14 @@ export default function Quote() {
     return quote;
   }
 
-  return (
-    <div className='w-[573px] h-[125px] relative'>
+  return !quoteData ? (
+    "Loading..."
+  ) : (
+    <div
+      className={`w-[573px] h-[125px] relative transition duration-400 ${
+        fade ? "opacity-0" : "opacity-100"
+      }`}
+    >
       <div className="w-[540px] text-white text-lg font-normal font-['Inter'] leading-7">
         "{quoteData.content}"
       </div>
