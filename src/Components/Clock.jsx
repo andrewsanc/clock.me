@@ -42,11 +42,11 @@ export default function Clock(props) {
 
   return (
     <>
-      <div className='w-[575px] h-[200px] left-0 top-[44px] flex flex-col items-start relative'>
-        <div className="left-[40px] top-0 text-white text-xl font-normal font-['Inter'] uppercase leading-7 tracking-[4px]">
+      <div className='w-[575px] flex flex-col items-start relative'>
+        <div className="text-white text-xl font-normal font-['Inter'] uppercase leading-7 tracking-[4px]">
           {getGreeting(time.hours)}, IT’S CURRENTLY
         </div>
-        <div className="left-0 top-0 text-white text-[200px] font-bold font-['Inter'] leading-[200px]">
+        <div className="text-white text-[200px] font-bold font-['Inter'] leading-[200px]">
           {`${convertToTwoDigit(time.hours)}:${convertToTwoDigit(
             time.minutes
           )}`}
@@ -54,7 +54,7 @@ export default function Clock(props) {
         <div className="left-[580px] top-[172px] absolute text-white text-[40px] font-light font-['Inter'] uppercase leading-7">
           {timezone.abbreviation}
         </div>
-        <div className="left-0 top-[260px] text-white text-2xl font-bold font-['Inter'] uppercase leading-7 tracking-[4.80px]">
+        <div className="text-white text-2xl font-bold font-['Inter'] uppercase leading-7 tracking-[4.80px]">
           in {city}, {region_iso_code}
         </div>
       </div>

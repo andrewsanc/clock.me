@@ -19,7 +19,7 @@ export default function Quote() {
     e.preventDefault();
     const quote = await getQuoteData();
     setQuoteData(quote);
-    setFade(false);
+    setFade((prev) => false);
   }
 
   async function getQuoteData() {
@@ -33,7 +33,7 @@ export default function Quote() {
     "Loading..."
   ) : (
     <div
-      className={`w-[573px] h-[125px] relative transition duration-400 ${
+      className={`w-[573px] relative transition duration-400 ${
         fade ? "opacity-0" : "opacity-100"
       }`}
     >

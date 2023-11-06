@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Clock from "./Components/Clock";
 import Quote from "./Components/Quote";
+import Weather from "./Components/Weather";
 
 export default function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -36,13 +37,12 @@ export default function App() {
 
   return (
     <div
-      className='h-screen overflow-hidden bg-cover bg-no-repeat flex items-center justify-center'
+      className='h-screen overflow-hidden bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5'
       style={{ backgroundImage: `url(${bgHeroData?.full})` }}
     >
-      <div className='flex flex-col items-center gap-4 w-80'>
-        <Quote />
-        {userInfo && <Clock userInfo={userInfo} />}
-      </div>
+      <Quote />
+      {userInfo && <Clock userInfo={userInfo} />}
+      <Weather />
     </div>
   );
 }
