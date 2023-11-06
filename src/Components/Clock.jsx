@@ -28,11 +28,23 @@ export default function Clock(props) {
     });
   }
 
+  function getGreeting(hour) {
+    if (hour >= 5 && hour < 12) {
+      return "GOOD MORNING";
+    } else if (hour >= 12 && hour < 18) {
+      return "GOOD AFTERNOON";
+    } else if (hour >= 18 && hour < 5) {
+      return "GOOD EVENING";
+    }
+
+    return "GOOD DAY";
+  }
+
   return (
     <>
       <div className='w-[575px] h-[200px] left-0 top-[44px] flex flex-col items-start relative'>
         <div className="left-[40px] top-0 text-white text-xl font-normal font-['Inter'] uppercase leading-7 tracking-[4px]">
-          GOOD MORNING, IT’S CURRENTLY
+          {getGreeting(time.hours)}, IT’S CURRENTLY
         </div>
         <div className="left-0 top-0 text-white text-[200px] font-bold font-['Inter'] leading-[200px]">
           {`${convertToTwoDigit(time.hours)}:${convertToTwoDigit(
