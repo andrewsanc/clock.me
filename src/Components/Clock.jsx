@@ -70,9 +70,6 @@ export default function Clock(props) {
 
 function splitTime(time) {
   const [hours, minutes, seconds] = time.split(":");
-
-  console.log(hours, minutes, seconds);
-
   return {
     hours,
     minutes,
