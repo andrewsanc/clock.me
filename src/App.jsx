@@ -41,8 +41,12 @@ export default function App() {
       style={{ backgroundImage: `url(${bgHeroData?.full})` }}
     >
       <Quote />
-      {userInfo && <Clock userInfo={userInfo} />}
-      <Weather />
+      {userInfo && (
+        <>
+          <Clock userInfo={userInfo} />
+          <Weather userInfo={userInfo} />
+        </>
+      )}
     </div>
   );
 }

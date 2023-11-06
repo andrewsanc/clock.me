@@ -33,7 +33,7 @@ export default function Quote() {
     "Loading..."
   ) : (
     <div
-      className={`w-[573px] relative transition duration-400 ${
+      className={`w-[573px] h-[150px] relative transition duration-400 ${
         fade ? "opacity-0" : "opacity-100"
       }`}
     >
