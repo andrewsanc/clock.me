@@ -15,6 +15,7 @@ export default function App() {
         }`
       );
       const data = await response.json();
+      console.log(data.timezone);
       setUserInfo(data);
     }
 
@@ -23,10 +24,10 @@ export default function App() {
 
   return (
     <div
-      className='h-screen overflow-hidden bg-cover bg-no-repeat'
+      className='h-screen overflow-hidden bg-cover bg-no-repeat flex items-center justify-center'
       style={{ backgroundImage: `url(${backgroundDay})` }}
     >
-      <div className='m-auto'>
+      <div className='flex flex-col gap-5'>
         {!hideQuote && <Quote />}
         {userInfo && (
           <Clock

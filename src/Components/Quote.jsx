@@ -28,16 +28,16 @@ export default function Quote() {
 
   return (
     <div className='w-[573px] h-[125px] relative'>
-      <div className="w-[540px] left-0 top-0 absolute text-white text-lg font-normal font-['Inter'] leading-7">
+      <div className="w-[540px] text-white text-lg font-normal font-['Inter'] leading-7">
         "{quoteData.content}"
       </div>
       <img
         onClick={handleOnClick}
-        className='w-[16.67px] h-[16.67px] left-[555.67px] top-[10.67px] absolute cursor-pointer'
+        className='w-[16.67px] h-[16.67px] absolute left-[555.67px] top-[10.67px] cursor-pointer hover:opacity-75 transition duration-200 ease-in-out'
         src={refreshIcon}
       />
-      <div className="w-[540px] left-0 top-[97px] absolute text-white text-lg font-bold font-['Inter'] leading-7">
-        {quoteData.author}
+      <div className="w-[540px] text-white text-lg font-bold font-['Inter'] leading-7 my-2">
+        - {quoteData.author}
       </div>
     </div>
   );
