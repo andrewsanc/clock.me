@@ -18,7 +18,6 @@ export default function Weather(props) {
       );
 
       const data = await response.json();
-      console.log(data);
       setWeatherData(data);
     }
 
