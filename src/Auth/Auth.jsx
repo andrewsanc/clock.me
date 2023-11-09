@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import Login from "../Components/Login";
+import Login from "../Components/Login/Login";
 import App from "../App";
 
 const supabase = createClient(
