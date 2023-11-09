@@ -27,7 +27,7 @@ export default function Weather(props) {
   return (
     <div className='w-[575px] h-[200px] flex justify-around items-center'>
       {weatherData?.forecast.forecastday.map((day, i) => (
-        <Day day={day} date={FORECAST_DATES[i]} />
+        <Day key={i} day={day} date={FORECAST_DATES[i]} />
       ))}
     </div>
   );

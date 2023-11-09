@@ -3,9 +3,9 @@ import Clock from "./Components/Clock";
 import Quote from "./Components/Quote";
 import Weather from "./Components/Weather";
 
-export default function App() {
+export default function App(props) {
+  const { supabaseClient } = props;
   const [userInfo, setUserInfo] = useState(null);
-  const [bgHeroData, setBgHeroData] = useState(null);
 
   useEffect(() => {
     async function getIpData() {
@@ -21,25 +21,21 @@ export default function App() {
     getIpData();
   }, []);
 
-  useEffect(() => {
-    async function getHeroData() {
-      const response = await fetch(
-        `https://api.unsplash.com/photos/random/?client_id=${
-          import.meta.env.VITE_UNSPLASH_API_KEY
-        }&query=nature&orientation=landscape`
-      );
-      const { urls } = await response.json();
-      setBgHeroData(urls);
-    }
-
-    getHeroData();
-  }, []);
+  async function handleOnSignOutBtn(e) {
+    e.preventDefault();
+    const { error } = await supabaseClient.auth.signOut();
+  }
 
   return (
-    <div
-      className='h-screen overflow-hidden bg-cover bg-no-repeat flex flex-col items-center justify-center gap-5'
-      style={{ backgroundImage: `url(${bgHeroData?.full})` }}
-    >
+    <>
+      <div className='absolute top-0 right-0 m-4'>
+        <button
+          className='inline-block rounded border-2 border-white px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:border-primary-accent-100 hover:bg-neutral-500 hover:bg-opacity-10 focus:border-primary-accent-100 focus:outline-none focus:ring-0 active:border-white-accent-200 dark:text-primary-100 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'
+          onClick={handleOnSignOutBtn}
+        >
+          Sign Out
+        </button>
+      </div>
       <Quote />
       {userInfo && (
         <>
@@ -47,6 +43,6 @@ export default function App() {
           <Weather userInfo={userInfo} />
         </>
       )}
-    </div>
+    </>
   );
 }
