@@ -25,5 +25,9 @@ export default function Auth() {
     return () => subscription.unsubscribe();
   }, []);
 
-  return !session ? <Login supabaseClient={supabase} /> : <App />;
+  return !session ? (
+    <Login supabaseClient={supabase} />
+  ) : (
+    <App supabaseClient={supabase} />
+  );
 }
