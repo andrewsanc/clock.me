@@ -9,12 +9,24 @@ export default function LoginForm(props) {
 
   async function handleOnSubmit(e) {
     e.preventDefault();
+    if (!signInData.email || !signInData.password) {
+      alert("Please fill out input fields");
+      return;
+    }
+
     const { data, error } = await supabaseClient.auth.signInWithPassword({
       email: signInData.email,
       password: signInData.password,
     });
 
-    localStorage.setItem("supabaseSession", JSON.stringify(data.session));
+    if (error) {
+      alert(error);
+    } else {
+      localStorage.setItem(
+        `sb-${import.meta.env.VITE_SUPABASE_NAME}-auth-token`,
+        JSON.stringify(session)
+      );
+    }
   }
 
   function handleOnChange(e) {

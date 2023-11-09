@@ -6,20 +6,38 @@ export default function RegisterForm(props) {
     email: "",
     password: "",
   });
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   function handleOnChange(e) {
     setRegisterData({
-      ...signInData,
+      ...registerData,
       [e.target.name]: e.target.value,
     });
   }
 
   async function handleOnFormSubmit(e) {
     e.preventDefault();
-    console.log("wee");
+    if (!registerData.email || !registerData.password) {
+      alert("Please fill out input fields");
+    }
+
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: registerData.email,
+      password: registerData.password,
+    });
+
+    if (error) {
+      alert(error);
+    } else {
+      setShowConfirmation(true);
+    }
   }
 
-  return (
+  return showConfirmation ? (
+    <>
+      <div>Confrim your account through your email</div>
+    </>
+  ) : (
     <form className='flex flex-col gap-4 w-80' onSubmit={handleOnFormSubmit}>
       <div className="self-center text-white text-xl font-normal font-['Inter'] leading-7">
         Sign Up
